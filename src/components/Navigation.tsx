@@ -6,10 +6,8 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: "Projects", href: "#projects" },
-    { name: "Services", href: "#services" },
     { name: "About", href: "#about" },
-    { name: "Journal", href: "#journal" },
+    { name: "Portfolio", href: "#portfolio" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -18,7 +16,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           <div className="font-serif text-2xl font-light text-charcoal">
-            Studio Heritage
+            Eva Fournier
           </div>
           
           {/* Desktop Navigation */}
@@ -33,7 +31,7 @@ const Navigation = () => {
               </a>
             ))}
             <Button variant="default" size="sm" className="ml-4">
-              Get Started
+              Get Quote
             </Button>
           </div>
 
@@ -65,7 +63,7 @@ const Navigation = () => {
               ))}
               <div className="px-3 py-2">
                 <Button variant="default" size="sm" className="w-full">
-                  Get Started
+                  Get Quote
                 </Button>
               </div>
             </div>
