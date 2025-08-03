@@ -1,73 +1,109 @@
-# Welcome to your Lovable project
+# Studio Bright Design - Interior Design Portfolio
 
-## Project info
+A modern, responsive portfolio website showcasing interior design transformations and services.
 
-**URL**: https://lovable.dev/projects/7ace2566-699c-4c53-84ea-328f70a8a463
+## Features
 
-## How can I edit this code?
+- **Responsive Design**: Optimized for all devices
+- **Before & After Gallery**: Interactive portfolio showcasing design transformations
+- **Modern UI**: Built with Tailwind CSS and shadcn/ui components
+- **Fast Performance**: Built with Vite for optimal loading speeds
+- **SEO Optimized**: Proper meta tags and structured content
 
-There are several ways of editing your application.
+## Technologies Used
 
-**Use Lovable**
+- **React 18** - Modern React with hooks
+- **TypeScript** - Type-safe development
+- **Vite** - Fast build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Beautiful, accessible UI components
+- **React Router** - Client-side routing
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7ace2566-699c-4c53-84ea-328f70a8a463) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+ and npm
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. Clone the repository:
 
-Follow these steps:
+```bash
+git clone <your-repo-url>
+cd studio-bright-design
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. Install dependencies:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. Start the development server:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open [http://localhost:8080](http://localhost:8080) in your browser
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Building for Production
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The built files will be in the `dist` directory, ready for deployment.
 
-## What technologies are used for this project?
+## Project Structure
 
-This project is built with:
+```
+src/
+├── components/          # React components
+│   ├── ui/             # shadcn/ui components
+│   ├── Hero.tsx        # Hero section
+│   ├── Navigation.tsx  # Navigation bar
+│   ├── About.tsx       # About section
+│   ├── Portfolio.tsx   # Portfolio gallery
+│   └── Footer.tsx      # Footer
+├── pages/              # Page components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+└── assets/             # Static assets
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Customization
 
-## How can I deploy this project?
+### Colors and Styling
 
-Simply open [Lovable](https://lovable.dev/projects/7ace2566-699c-4c53-84ea-328f70a8a463) and click on Share -> Publish.
+The project uses Tailwind CSS with custom colors defined in `tailwind.config.ts`. You can customize the color scheme by modifying the theme configuration.
 
-## Can I connect a custom domain to my Lovable project?
+### Content
 
-Yes, you can!
+Update the content in the component files:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- `src/components/Hero.tsx` - Hero section content
+- `src/components/About.tsx` - About section content
+- `src/components/Portfolio.tsx` - Portfolio projects
+- `src/components/Footer.tsx` - Footer information
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Images
+
+Replace the placeholder images in the `public/` directory with your own:
+
+- `public/placeholder.svg` - Hero background image
+- `public/before-and-after/` - Portfolio images
+
+## Deployment
+
+This project can be deployed to any static hosting service:
+
+- **Vercel**: Connect your GitHub repo for automatic deployments
+- **Netlify**: Drag and drop the `dist` folder or connect your repo
+- **GitHub Pages**: Use GitHub Actions for automatic deployment
+- **AWS S3**: Upload the `dist` folder to an S3 bucket
+
+## License
+
+This project is private and proprietary to Studio Bright Design.
