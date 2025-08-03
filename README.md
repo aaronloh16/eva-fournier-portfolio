@@ -1,4 +1,4 @@
-# Studio Bright Design - Interior Design Portfolio
+# Eva Fournier - Interior Design Portfolio
 
 A modern, responsive portfolio website showcasing interior design transformations and services.
 
@@ -9,6 +9,7 @@ A modern, responsive portfolio website showcasing interior design transformation
 - **Modern UI**: Built with Tailwind CSS and shadcn/ui components
 - **Fast Performance**: Built with Vite for optimal loading speeds
 - **SEO Optimized**: Proper meta tags and structured content
+- **WebP Images**: Optimized images for faster loading
 
 ## Technologies Used
 
@@ -24,6 +25,7 @@ A modern, responsive portfolio website showcasing interior design transformation
 ### Prerequisites
 
 - Node.js 18+ and npm
+- ImageMagick (for image optimization)
 
 ### Installation
 
@@ -40,13 +42,32 @@ cd studio-bright-design
 npm install
 ```
 
-3. Start the development server:
+3. Install ImageMagick for image optimization:
+
+```bash
+# macOS
+brew install imagemagick
+
+# Ubuntu
+sudo apt-get install imagemagick
+
+# Windows
+# Download from https://imagemagick.org/
+```
+
+4. Optimize images:
+
+```bash
+npm run optimize-images
+```
+
+5. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:8080](http://localhost:8080) in your browser
+6. Open [http://localhost:8080](http://localhost:8080) in your browser
 
 ### Building for Production
 
@@ -55,6 +76,44 @@ npm run build
 ```
 
 The built files will be in the `dist` directory, ready for deployment.
+
+## Deployment
+
+### GitHub Pages (Recommended)
+
+This project is configured for automatic deployment to GitHub Pages:
+
+1. **Push to GitHub**: Push your code to a GitHub repository
+2. **Enable GitHub Pages**:
+   - Go to Settings > Pages
+   - Set source to "GitHub Actions"
+3. **Automatic Deployment**: The site will automatically deploy on every push to main
+
+The site will be available at: `https://yourusername.github.io/studio-bright-design/`
+
+### Manual Deployment
+
+You can also deploy to any static hosting service:
+
+- **Vercel**: Connect your GitHub repo for automatic deployments
+- **Netlify**: Drag and drop the `dist` folder or connect your repo
+- **AWS S3**: Upload the `dist` folder to an S3 bucket
+
+## Performance Optimizations
+
+### Image Optimization
+
+- **WebP Format**: All images are converted to WebP for better compression
+- **Responsive Sizes**: Multiple image sizes for different screen sizes
+- **Lazy Loading**: Images load as needed for better performance
+- **Quality Settings**: Optimized quality (85%) for web use
+
+### Build Optimizations
+
+- **Code Splitting**: Vendor and UI libraries are split into separate chunks
+- **Tree Shaking**: Unused code is automatically removed
+- **Minification**: All assets are minified for production
+- **Source Maps**: Disabled for smaller bundle size
 
 ## Project Structure
 
@@ -71,6 +130,10 @@ src/
 ├── hooks/              # Custom React hooks
 ├── lib/                # Utility functions
 └── assets/             # Static assets
+
+public/
+├── optimized/          # Optimized WebP images
+└── before-and-after/   # Original portfolio images
 ```
 
 ## Customization
@@ -90,20 +153,13 @@ Update the content in the component files:
 
 ### Images
 
-Replace the placeholder images in the `public/` directory with your own:
+Replace the images in the `public/` directory with your own:
 
-- `public/placeholder.svg` - Hero background image
+- `src/assets/hero-interior.jpg` - Hero background image
 - `public/before-and-after/` - Portfolio images
 
-## Deployment
-
-This project can be deployed to any static hosting service:
-
-- **Vercel**: Connect your GitHub repo for automatic deployments
-- **Netlify**: Drag and drop the `dist` folder or connect your repo
-- **GitHub Pages**: Use GitHub Actions for automatic deployment
-- **AWS S3**: Upload the `dist` folder to an S3 bucket
+Then run `npm run optimize-images` to create optimized versions.
 
 ## License
 
-This project is private and proprietary to Studio Bright Design.
+This project is private and proprietary to Eva Fournier.
