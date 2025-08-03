@@ -5,23 +5,17 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Index from './pages/Index';
 import NotFound from './pages/NotFound';
 
-console.log('📱 App component loading...');
-
-const App = () => {
-	console.log('🎨 App component rendering...');
-	
-	return (
-		<TooltipProvider>
-			<Toaster />
-			<Sonner />
-			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<Index />} />
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-			</BrowserRouter>
-		</TooltipProvider>
-	);
-};
+const App = () => (
+	<TooltipProvider>
+		<Toaster />
+		<Sonner />
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Index />} />
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		</BrowserRouter>
+	</TooltipProvider>
+);
 
 export default App;
