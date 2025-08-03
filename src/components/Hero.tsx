@@ -1,18 +1,15 @@
 import { Button } from '@/components/ui/button';
+import heroImage from '@/assets/hero-interior.jpg';
 
 const Hero = () => {
 	return (
 		<section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 			<div className="absolute inset-0">
-				<picture>
-					<source srcSet="/optimized/hero-interior.webp" type="image/webp" />
-					<img
-						src="/optimized/hero-interior.webp"
-						alt="Elegant interior design"
-						className="w-full h-full object-cover"
-						loading="eager"
-					/>
-				</picture>
+				<img
+					src={heroImage}
+					alt="Elegant interior design"
+					className="w-full h-full object-cover"
+				/>
 				<div className="absolute inset-0 bg-black/30" />
 			</div>
 

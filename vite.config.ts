@@ -4,7 +4,7 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: process.env.NODE_ENV === 'production' ? '/studio-bright-design/' : '/',
+	base: '/studio-bright-design/',
 	server: {
 		host: '::',
 		port: 8080,
@@ -23,7 +23,12 @@ export default defineConfig({
 			output: {
 				manualChunks: {
 					vendor: ['react', 'react-dom'],
-					ui: ['@radix-ui/react-slot', '@radix-ui/react-tabs', '@radix-ui/react-toast', '@radix-ui/react-tooltip'],
+					ui: [
+						'@radix-ui/react-slot',
+						'@radix-ui/react-tabs',
+						'@radix-ui/react-toast',
+						'@radix-ui/react-tooltip',
+					],
 				},
 			},
 		},
