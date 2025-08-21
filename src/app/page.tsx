@@ -1,6 +1,8 @@
 'use client';
 
 import Image from 'next/image';
+import BeforeAfterSlider from '@/components/BeforeAfterSlider';
+import ThemeToggle from '@/components/ThemeToggle';
 
 // Portfolio data with organized before/after projects
 const portfolioProjects = [
@@ -210,29 +212,38 @@ const showcaseProjects = [
 
 export default function Home() {
 	return (
-		<div className="min-h-screen bg-warm-cream">
+		<div className="min-h-screen bg-background">
+			{/* Theme Toggle */}
+			<ThemeToggle />
+
 			{/* Navigation */}
 			<nav className="px-6 py-8 max-w-6xl mx-auto">
 				<div className="flex justify-between items-center">
-					<h1 className="font-serif text-2xl font-light text-charcoal">
+					<h1 className="font-serif text-2xl font-light text-foreground">
 						Eva Fournier
+						<span
+							className="block text-sm font-normal tracking-wide"
+							style={{ color: '#8B9A7A' }}
+						>
+							Interior Design & Staging
+						</span>
 					</h1>
 					<div className="hidden md:flex space-x-8">
 						<a
 							href="#about"
-							className="text-soft-gray hover:text-charcoal transition-colors"
+							className="text-secondary hover:text-foreground transition-colors"
 						>
 							About
 						</a>
 						<a
 							href="#portfolio"
-							className="text-soft-gray hover:text-charcoal transition-colors"
+							className="text-secondary hover:text-foreground transition-colors"
 						>
 							Portfolio
 						</a>
 						<a
 							href="#contact"
-							className="text-soft-gray hover:text-charcoal transition-colors"
+							className="text-secondary hover:text-foreground transition-colors"
 						>
 							Contact
 						</a>
@@ -241,35 +252,67 @@ export default function Home() {
 			</nav>
 
 			{/* Hero Section */}
-			<section className="px-6 py-16 max-w-6xl mx-auto">
-				<div className="text-center max-w-3xl mx-auto">
-					<h2 className="font-serif text-5xl md:text-6xl font-light text-charcoal mb-6">
+			<section className="px-6 py-20 max-w-6xl mx-auto">
+				<div className="text-center max-w-4xl mx-auto">
+					<div className="mb-8">
+						<span className="inline-block bg-primary-light text-primary-dark px-4 py-2 rounded-full text-sm font-semibold tracking-wide uppercase mb-6">
+							Interior Design & Staging
+						</span>
+					</div>
+					<h2 className="font-serif text-5xl md:text-7xl font-light text-foreground mb-8 leading-tight">
 						Timeless Design
+						<span className="block text-primary font-normal">That Sells</span>
 					</h2>
-					<p className="text-xl text-soft-gray mb-8 leading-relaxed">
+					<p className="text-xl md:text-2xl text-secondary mb-12 leading-relaxed max-w-2xl mx-auto">
 						Creating beautiful, functional spaces that enhance everyday living
-						through thoughtful design and staging.
+						through thoughtful design and strategic staging.
 					</p>
-					<button
-						onClick={() =>
-							document
-								.getElementById('portfolio')
-								?.scrollIntoView({ behavior: 'smooth' })
-						}
-						className="bg-sage-green text-warm-white px-8 py-3 rounded-sm hover:bg-sage-green/90 transition-colors"
-					>
-						View My Work
-					</button>
+					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+						<button
+							onClick={() =>
+								document
+									.getElementById('portfolio')
+									?.scrollIntoView({ behavior: 'smooth' })
+							}
+							className="px-8 py-4 rounded-lg transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+							style={{ backgroundColor: '#8B9A7A', color: 'white' }}
+						>
+							View My Work
+						</button>
+						<button
+							onClick={() =>
+								document
+									.getElementById('contact')
+									?.scrollIntoView({ behavior: 'smooth' })
+							}
+							className="px-8 py-4 rounded-lg transition-all duration-300 font-semibold text-lg"
+							style={{
+								border: '2px solid #8B9A7A',
+								color: '#8B9A7A',
+								backgroundColor: 'transparent',
+							}}
+							onMouseEnter={(e) => {
+								e.currentTarget.style.backgroundColor = '#8B9A7A';
+								e.currentTarget.style.color = 'white';
+							}}
+							onMouseLeave={(e) => {
+								e.currentTarget.style.backgroundColor = 'transparent';
+								e.currentTarget.style.color = '#8B9A7A';
+							}}
+						>
+							Get In Touch
+						</button>
+					</div>
 				</div>
 			</section>
 
 			{/* About Section */}
-			<section id="about" className="px-6 py-16 bg-warm-white">
+			<section id="about" className="px-6 py-16 bg-muted">
 				<div className="max-w-4xl mx-auto">
-					<h3 className="font-serif text-3xl text-charcoal mb-8 text-center">
+					<h3 className="font-serif text-3xl text-foreground mb-8 text-center">
 						About
 					</h3>
-					<div className="text-soft-gray leading-relaxed text-center max-w-2xl mx-auto">
+					<div className="text-secondary leading-relaxed text-center max-w-2xl mx-auto">
 						<p className="mb-4">
 							I&apos;m a home stager with a passion for transforming spaces into
 							warm, beautiful homes that buyers fall in love with.
@@ -286,63 +329,59 @@ export default function Home() {
 			{/* Portfolio Section */}
 			<section id="portfolio" className="px-6 py-16">
 				<div className="max-w-7xl mx-auto">
-					<h3 className="font-serif text-3xl text-charcoal mb-4 text-center">
+					<h3 className="font-serif text-3xl text-foreground mb-4 text-center">
 						Before & After
 					</h3>
-					<p className="text-soft-gray text-center mb-16 max-w-2xl mx-auto">
+					<p className="text-secondary text-center mb-16 max-w-2xl mx-auto">
 						See how strategic staging transforms spaces and helps homes sell
 						faster
 					</p>
 
 					{/* Before/After Projects */}
-					<div className="space-y-24 mb-24">
-						{portfolioProjects.map((project) => (
+					<div className="space-y-16 mb-24">
+						{portfolioProjects.map((project, index) => (
 							<div
 								key={project.id}
-								className="grid lg:grid-cols-2 gap-12 items-center"
+								className={`grid lg:grid-cols-2 gap-12 items-center ${
+									index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+								}`}
 							>
-								<div className="space-y-8">
-									<div>
-										<h4 className="font-serif text-2xl text-charcoal mb-2">
+								<div
+									className={`space-y-6 ${
+										index % 2 === 1 ? 'lg:col-start-2' : ''
+									}`}
+								>
+									<div className="mb-6">
+										<span className="inline-block bg-primary-light text-primary-dark px-3 py-1 rounded-full text-sm font-medium mb-3">
+											Project {String(index + 1).padStart(2, '0')}
+										</span>
+										<h4 className="font-serif text-3xl text-foreground mb-3">
 											{project.title}
 										</h4>
-										<p className="text-sage-green font-medium mb-4">
+										<p className="text-primary font-semibold mb-4 flex items-center">
+											<svg
+												width="16"
+												height="16"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="mr-2"
+											>
+												<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+											</svg>
 											{project.location}
 										</p>
-										<p className="text-soft-gray leading-relaxed">
+										<p className="text-secondary leading-relaxed text-lg">
 											{project.description}
 										</p>
 									</div>
 								</div>
 
-								<div className="space-y-6">
-									{/* Before Image */}
-									<div className="relative group">
-										<Image
-											src={project.beforeImage}
-											alt={`${project.title} - Before`}
-											width={600}
-											height={400}
-											className="w-full h-64 object-cover rounded-sm transition-transform duration-300 group-hover:scale-[1.02]"
-										/>
-										<div className="absolute top-4 left-4 bg-charcoal/90 text-warm-white px-3 py-1 rounded-full text-sm font-medium">
-											Before
-										</div>
-									</div>
-
-									{/* After Image */}
-									<div className="relative group">
-										<Image
-											src={project.afterImage}
-											alt={`${project.title} - After`}
-											width={600}
-											height={400}
-											className="w-full h-64 object-cover rounded-sm transition-transform duration-300 group-hover:scale-[1.02]"
-										/>
-										<div className="absolute top-4 left-4 bg-sage-green text-warm-white px-3 py-1 rounded-full text-sm font-medium">
-											After
-										</div>
-									</div>
+								<div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+									<BeforeAfterSlider
+										beforeImage={project.beforeImage}
+										afterImage={project.afterImage}
+										title={project.title}
+									/>
 								</div>
 							</div>
 						))}
@@ -350,36 +389,46 @@ export default function Home() {
 
 					{/* Showcase Projects */}
 					<div>
-						<h3 className="font-serif text-3xl text-charcoal mb-4 text-center">
+						<h3 className="font-serif text-4xl text-foreground mb-4 text-center">
 							Featured Work
 						</h3>
-						<p className="text-soft-gray text-center mb-16 max-w-2xl mx-auto">
+						<p className="text-secondary text-center mb-16 max-w-2xl mx-auto text-lg">
 							Additional projects showcasing elegant design solutions
 						</p>
 
-						<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+						<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 							{showcaseProjects.map((project) => (
 								<div
 									key={project.id}
-									className="bg-warm-white rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+									className="bg-card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-border"
 								>
-									<div className="relative group">
+									<div className="relative overflow-hidden">
 										<Image
 											src={project.image}
 											alt={project.title}
 											width={400}
 											height={300}
-											className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+											className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
 										/>
+										<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 									</div>
-									<div className="p-4">
-										<h4 className="font-serif text-lg text-charcoal mb-1">
+									<div className="p-6">
+										<h4 className="font-serif text-xl text-foreground mb-2 group-hover:text-primary transition-colors">
 											{project.title}
 										</h4>
-										<p className="text-sage-green text-sm font-medium mb-2">
+										<p className="text-primary text-sm font-semibold mb-3 flex items-center">
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="mr-1"
+											>
+												<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+											</svg>
 											{project.location}
 										</p>
-										<p className="text-soft-gray text-sm">
+										<p className="text-secondary text-sm leading-relaxed">
 											{project.description}
 										</p>
 									</div>
@@ -391,16 +440,19 @@ export default function Home() {
 			</section>
 
 			{/* Contact Section */}
-			<section id="contact" className="px-6 py-16 bg-charcoal text-warm-white">
+			<section
+				id="contact"
+				className="px-6 py-16 bg-foreground text-background"
+			>
 				<div className="max-w-4xl mx-auto text-center">
 					<h3 className="font-serif text-3xl mb-8">Get In Touch</h3>
-					<p className="text-warm-white/80 mb-8">
+					<p className="opacity-80 mb-8">
 						Ready to transform your space? Let&apos;s discuss your project.
 					</p>
 					<div className="space-y-2">
 						<p>eva@example.com</p>
 						<p>(403) 555-0123</p>
-						<p className="text-warm-white/60">Calgary, AB</p>
+						<p className="opacity-60">Calgary, AB</p>
 					</div>
 				</div>
 			</section>

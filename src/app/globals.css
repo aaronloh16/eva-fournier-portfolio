@@ -1,19 +1,34 @@
 @import 'tailwindcss';
 
+/* Light Mode (Default) */
 :root {
 	--background: #fefcfb;
 	--foreground: #2d2925;
+	--primary: #22c55e;
+	--primary-light: #bbf7d0;
+	--primary-dark: #16a34a;
+	--secondary: #6b645c;
+	--card: #fefefe;
+	--border: #e5e5e5;
+	--muted: #f9faf7;
+}
 
-	/* Eva Fournier color palette */
-	--warm-cream: #fefcfb;
-	--sage-green: #a3b18a;
-	--charcoal: #2d2925;
-	--warm-white: #fefefe;
-	--soft-gray: #6b645c;
+/* Dark Mode */
+[data-theme='dark'] {
+	--background: #1a1a1a;
+	--foreground: #e8e8e8;
+	--primary: #a4b494;
+	--primary-light: #b8c8aa;
+	--primary-dark: #8b9a7a;
+	--secondary: #a0a0a0;
+	--card: #2a2a2a;
+	--border: #404040;
+	--muted: #232823;
 }
 
 body {
 	background: var(--background);
 	color: var(--foreground);
 	font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }

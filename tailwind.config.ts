@@ -4,11 +4,13 @@ export default {
 			colors: {
 				background: 'var(--background)',
 				foreground: 'var(--foreground)',
-				'warm-cream': 'var(--warm-cream)',
-				'sage-green': 'var(--sage-green)',
-				charcoal: 'var(--charcoal)',
-				'warm-white': 'var(--warm-white)',
-				'soft-gray': 'var(--soft-gray)',
+				primary: 'var(--primary)',
+				'primary-light': 'var(--primary-light)',
+				'primary-dark': 'var(--primary-dark)',
+				secondary: 'var(--secondary)',
+				card: 'var(--card)',
+				border: 'var(--border)',
+				muted: 'var(--muted)',
 			},
 			fontFamily: {
 				serif: ['var(--font-playfair)', 'serif'],
