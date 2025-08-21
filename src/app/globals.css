@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+:root {
+	--background: #fefcfb;
+	--foreground: #2d2925;
+
+	/* Eva Fournier color palette */
+	--warm-cream: #fefcfb;
+	--sage-green: #a3b18a;
+	--charcoal: #2d2925;
+	--warm-white: #fefefe;
+	--soft-gray: #6b645c;
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
