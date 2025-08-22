@@ -78,7 +78,7 @@ export default function BeforeAfterSlider({
 				src={afterImage}
 				alt={`${title} - After`}
 				fill
-				className="object-cover"
+				className="portfolio-image"
 				priority
 			/>
 
@@ -91,7 +91,7 @@ export default function BeforeAfterSlider({
 					src={beforeImage}
 					alt={`${title} - Before`}
 					fill
-					className="object-cover"
+					className="portfolio-image"
 					priority
 				/>
 			</div>

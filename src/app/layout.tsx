@@ -15,9 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-	title: 'Eva Fournier - Interior Design & Home Staging',
+	title: 'Eva Nowodworski - Interior Design & Home Staging',
 	description:
-		'Creating beautiful, functional spaces that enhance everyday living through thoughtful design.',
+		'Creating beautiful, functional spaces that enhance everyday living through thoughtful design and staging.',
 };
 
 export default function RootLayout({
