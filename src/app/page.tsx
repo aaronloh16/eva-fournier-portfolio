@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
-import ThemeToggle from '@/components/ThemeToggle';
 
 // Portfolio data with organized before/after projects
 const portfolioProjects = [
@@ -245,38 +244,25 @@ export default function Home() {
 		return project.category === selectedCategory;
 	});
 
-	// Calculate background color based on scroll position and theme
+		// Calculate background color based on scroll position
 	const getBackgroundColor = () => {
 		// Check if we're on the client side
 		if (typeof window === 'undefined') {
 			return '#fefcfb'; // Default light background for SSR
 		}
+		
+		// Simple scroll effect for light mode only
+		const maxScroll = 1000;
+		const scrollRatio = Math.min(scrollY / maxScroll, 1);
 
-		// Check if dark mode is active
-		const isDarkMode =
-			document.documentElement.getAttribute('data-theme') === 'dark';
+		const lightR = 254, lightG = 252, lightB = 251; // #fefcfb
+		const darkR = 248, darkG = 245, darkB = 240;   // #f8f5f0
 
-		if (isDarkMode) {
-			// For dark mode, return the CSS variable value
-			return 'var(--background)';
-		} else {
-			// For light mode, keep the scroll effect
-			const maxScroll = 1000;
-			const scrollRatio = Math.min(scrollY / maxScroll, 1);
+		const r = Math.round(lightR + (darkR - lightR) * scrollRatio);
+		const g = Math.round(lightG + (darkG - lightG) * scrollRatio);
+		const b = Math.round(lightB + (darkB - lightB) * scrollRatio);
 
-			const lightR = 254,
-				lightG = 252,
-				lightB = 251; // #fefcfb
-			const darkR = 248,
-				darkG = 245,
-				darkB = 240; // #f8f5f0
-
-			const r = Math.round(lightR + (darkR - lightR) * scrollRatio);
-			const g = Math.round(lightG + (darkG - lightG) * scrollRatio);
-			const b = Math.round(lightB + (darkB - lightB) * scrollRatio);
-
-			return `rgb(${r}, ${g}, ${b})`;
-		}
+		return `rgb(${r}, ${g}, ${b})`;
 	};
 
 	return (
@@ -284,9 +270,6 @@ export default function Home() {
 			className="min-h-screen transition-colors duration-300"
 			style={{ backgroundColor: getBackgroundColor() }}
 		>
-			{/* Theme Toggle */}
-			<ThemeToggle />
-
 			{/* Navigation */}
 			<nav className="px-6 py-8 max-w-6xl mx-auto">
 				<div className="flex justify-between items-center">

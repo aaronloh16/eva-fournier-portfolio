@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@300;400;600&display=swap');
 
-/* Light Mode (Default) */
+/* Light Mode Only */
 :root {
 	--background: #fefcfb;
 	--foreground: #2d2925;
@@ -12,19 +12,6 @@
 	--card: #ffffff;
 	--border: #e5e5e5;
 	--muted: #f0ebe5;
-}
-
-/* Dark Mode */
-[data-theme='dark'] {
-	--background: #1a1a1a;
-	--foreground: #e8e8e8;
-	--primary: #a4b494;
-	--primary-light: #b8c8aa;
-	--primary-dark: #8b9a7a;
-	--secondary: #a0a0a0;
-	--card: #2a2a2a;
-	--border: #404040;
-	--muted: #232823;
 }
 
 body {
