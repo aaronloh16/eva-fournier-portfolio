@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 
 // Portfolio data with organized before/after projects
@@ -203,16 +203,6 @@ const showcaseProjects = [
 
 export default function Home() {
 	const [selectedCategory, setSelectedCategory] = useState('all');
-	const [scrollY, setScrollY] = useState(0);
-
-	useEffect(() => {
-		const handleScroll = () => {
-			setScrollY(window.scrollY);
-		};
-
-		window.addEventListener('scroll', handleScroll, { passive: true });
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
 
 	const smoothScrollTo = (elementId: string) => {
 		console.log('Smooth scrolling to:', elementId); // Debug log
@@ -244,32 +234,10 @@ export default function Home() {
 		return project.category === selectedCategory;
 	});
 
-		// Calculate background color based on scroll position
-	const getBackgroundColor = () => {
-		// Check if we're on the client side
-		if (typeof window === 'undefined') {
-			return '#fefcfb'; // Default light background for SSR
-		}
-		
-		// Simple scroll effect for light mode only
-		const maxScroll = 1000;
-		const scrollRatio = Math.min(scrollY / maxScroll, 1);
 
-		const lightR = 254, lightG = 252, lightB = 251; // #fefcfb
-		const darkR = 248, darkG = 245, darkB = 240;   // #f8f5f0
-
-		const r = Math.round(lightR + (darkR - lightR) * scrollRatio);
-		const g = Math.round(lightG + (darkG - lightG) * scrollRatio);
-		const b = Math.round(lightB + (darkB - lightB) * scrollRatio);
-
-		return `rgb(${r}, ${g}, ${b})`;
-	};
 
 	return (
-		<div
-			className="min-h-screen transition-colors duration-300"
-			style={{ backgroundColor: getBackgroundColor() }}
-		>
+		<div className="min-h-screen bg-background">
 			{/* Navigation */}
 			<nav className="px-6 py-8 max-w-6xl mx-auto">
 				<div className="flex justify-between items-center">
@@ -325,8 +293,8 @@ export default function Home() {
 				</div>
 			</nav>
 
-			{/* Hero Section */}
-			<section className="px-6 py-20 max-w-6xl mx-auto">
+						{/* Hero Section */}
+			<section className="px-6 py-20 max-w-6xl mx-auto relative" style={{ background: 'linear-gradient(135deg, #fefcfb 0%, #f7f5f2 50%, #fefcfb 100%)' }}>
 				<div className="text-center max-w-4xl mx-auto">
 					<div className="mb-8">
 						<span className="inline-block bg-primary-light text-primary-dark px-4 py-2 rounded-full text-sm font-semibold tracking-wide uppercase mb-6">
