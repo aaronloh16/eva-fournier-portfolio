@@ -251,7 +251,7 @@ export default function Home() {
 		if (typeof window === 'undefined') {
 			return '#fefcfb'; // Default light background for SSR
 		}
-		
+
 		// Check if dark mode is active
 		const isDarkMode =
 			document.documentElement.getAttribute('data-theme') === 'dark';

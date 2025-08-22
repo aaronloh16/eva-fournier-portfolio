@@ -4,17 +4,21 @@ import { useState, useEffect } from 'react';
 
 export default function ThemeToggle() {
 	const [isDark, setIsDark] = useState(false);
+	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
-		// Check for saved theme preference or default to light mode
+		setMounted(true);
+		
+		// Check for saved theme preference - default to light mode
 		const savedTheme = localStorage.getItem('theme');
-		const prefersDark = window.matchMedia(
-			'(prefers-color-scheme: dark)'
-		).matches;
-
-		if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+		
+		if (savedTheme === 'dark') {
 			setIsDark(true);
 			document.documentElement.setAttribute('data-theme', 'dark');
+		} else {
+			// Explicitly set light mode (remove any dark mode attributes)
+			setIsDark(false);
+			document.documentElement.removeAttribute('data-theme');
 		}
 	}, []);
 
@@ -30,6 +34,11 @@ export default function ThemeToggle() {
 
 		localStorage.setItem('theme', newTheme);
 	};
+
+	// Don't render until mounted to prevent hydration mismatch
+	if (!mounted) {
+		return null;
+	}
 
 	return (
 		<button
