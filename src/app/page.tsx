@@ -292,11 +292,11 @@ export default function Home() {
 			</nav>
 
 			{/* Hero Section */}
-			<section className="px-6 py-20 max-w-6xl mx-auto relative">
-				<div className="text-center max-w-4xl mx-auto">
-					{/* Background only for text content, not buttons */}
+			<section className="px-6 py-2 relative">
+				<div className="text-center">
+					{/* Background for text content and buttons */}
 					<div
-						className="relative px-8 py-16 rounded-3xl"
+						className="relative px-20 py-16 rounded-3xl mx-2 md:mx-4 lg:mx-6"
 						style={{
 							background:
 								'linear-gradient(135deg, #fefcfb 0%, #e8e2d8 50%, #fefcfb 100%)',
@@ -315,36 +315,36 @@ export default function Home() {
 							Creating beautiful, functional spaces that enhance everyday living
 							through thoughtful design and strategic staging.
 						</p>
-					</div>
 
-					{/* Buttons outside of background */}
-					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
-						<button
-							onClick={() => smoothScrollTo('portfolio')}
-							className="px-8 py-4 rounded-lg transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-							style={{ backgroundColor: '#8B9A7A', color: 'white' }}
-						>
-							View My Work
-						</button>
-						<button
-							onClick={() => smoothScrollTo('contact')}
-							className="px-8 py-4 rounded-lg transition-all duration-300 font-semibold text-lg"
-							style={{
-								border: '2px solid #8B9A7A',
-								color: '#8B9A7A',
-								backgroundColor: 'transparent',
-							}}
-							onMouseEnter={(e) => {
-								e.currentTarget.style.backgroundColor = '#8B9A7A';
-								e.currentTarget.style.color = 'white';
-							}}
-							onMouseLeave={(e) => {
-								e.currentTarget.style.backgroundColor = 'transparent';
-								e.currentTarget.style.color = '#8B9A7A';
-							}}
-						>
-							Get In Touch
-						</button>
+						{/* Buttons inside background */}
+						<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+							<button
+								onClick={() => smoothScrollTo('portfolio')}
+								className="px-8 py-4 rounded-lg transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+								style={{ backgroundColor: '#8B9A7A', color: 'white' }}
+							>
+								View My Work
+							</button>
+							<button
+								onClick={() => smoothScrollTo('contact')}
+								className="px-8 py-4 rounded-lg transition-all duration-300 font-semibold text-lg"
+								style={{
+									border: '2px solid #8B9A7A',
+									color: '#8B9A7A',
+									backgroundColor: 'transparent',
+								}}
+								onMouseEnter={(e) => {
+									e.currentTarget.style.backgroundColor = '#8B9A7A';
+									e.currentTarget.style.color = 'white';
+								}}
+								onMouseLeave={(e) => {
+									e.currentTarget.style.backgroundColor = 'transparent';
+									e.currentTarget.style.color = '#8B9A7A';
+								}}
+							>
+								Get In Touch
+							</button>
+						</div>
 					</div>
 				</div>
 			</section>
