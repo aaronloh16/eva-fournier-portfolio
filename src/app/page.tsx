@@ -228,7 +228,7 @@ export default function Home() {
 					top: offsetTop - 80,
 					behavior: 'smooth',
 				});
-			} catch (error) {
+			} catch {
 				// Fallback for older browsers
 				element.scrollIntoView({
 					behavior: 'smooth',
@@ -247,6 +247,11 @@ export default function Home() {
 
 	// Calculate background color based on scroll position and theme
 	const getBackgroundColor = () => {
+		// Check if we're on the client side
+		if (typeof window === 'undefined') {
+			return '#fefcfb'; // Default light background for SSR
+		}
+		
 		// Check if dark mode is active
 		const isDarkMode =
 			document.documentElement.getAttribute('data-theme') === 'dark';
@@ -569,7 +574,7 @@ export default function Home() {
 				<div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
 
 				<div className="max-w-4xl mx-auto text-center relative z-10">
-					<h3 className="font-serif text-5xl mb-8">Let's Get In Touch!</h3>
+					<h3 className="font-serif text-5xl mb-8">Let&apos;s Get In Touch!</h3>
 					<p className="opacity-90 mb-12 text-lg leading-relaxed">
 						Whether you&apos;re a realtor looking to enhance listings or a
 						homeowner preparing to sell, I&apos;m here to help create spaces
