@@ -234,8 +234,6 @@ export default function Home() {
 		return project.category === selectedCategory;
 	});
 
-
-
 	return (
 		<div className="min-h-screen bg-background">
 			{/* Navigation */}
@@ -293,23 +291,34 @@ export default function Home() {
 				</div>
 			</nav>
 
-						{/* Hero Section */}
-			<section className="px-6 py-20 max-w-6xl mx-auto relative" style={{ background: 'linear-gradient(135deg, #fefcfb 0%, #f7f5f2 50%, #fefcfb 100%)' }}>
+			{/* Hero Section */}
+			<section className="px-6 py-20 max-w-6xl mx-auto relative">
 				<div className="text-center max-w-4xl mx-auto">
-					<div className="mb-8">
-						<span className="inline-block bg-primary-light text-primary-dark px-4 py-2 rounded-full text-sm font-semibold tracking-wide uppercase mb-6">
-							Interior Design & Staging
-						</span>
+					{/* Background only for text content, not buttons */}
+					<div
+						className="relative px-8 py-16 rounded-3xl"
+						style={{
+							background:
+								'linear-gradient(135deg, #fefcfb 0%, #e8e2d8 50%, #fefcfb 100%)',
+						}}
+					>
+						<div className="mb-8">
+							<span className="inline-block bg-primary-light text-primary-dark px-4 py-2 rounded-full text-sm font-semibold tracking-wide uppercase mb-6">
+								Interior Design & Staging
+							</span>
+						</div>
+						<h2 className="font-serif text-5xl md:text-7xl font-light text-foreground mb-8 leading-tight">
+							Timeless Design
+							<span className="block text-primary font-normal">That Sells</span>
+						</h2>
+						<p className="text-xl md:text-2xl text-secondary mb-12 leading-relaxed max-w-2xl mx-auto">
+							Creating beautiful, functional spaces that enhance everyday living
+							through thoughtful design and strategic staging.
+						</p>
 					</div>
-					<h2 className="font-serif text-5xl md:text-7xl font-light text-foreground mb-8 leading-tight">
-						Timeless Design
-						<span className="block text-primary font-normal">That Sells</span>
-					</h2>
-					<p className="text-xl md:text-2xl text-secondary mb-12 leading-relaxed max-w-2xl mx-auto">
-						Creating beautiful, functional spaces that enhance everyday living
-						through thoughtful design and strategic staging.
-					</p>
-					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+
+					{/* Buttons outside of background */}
+					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
 						<button
 							onClick={() => smoothScrollTo('portfolio')}
 							className="px-8 py-4 rounded-lg transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
