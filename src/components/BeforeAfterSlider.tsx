@@ -22,10 +22,6 @@ export default function BeforeAfterSlider({
 		setIsDragging(true);
 	};
 
-	const handleMouseUp = () => {
-		setIsDragging(false);
-	};
-
 	const handleMouseMove = (e: React.MouseEvent) => {
 		if (!isDragging || !containerRef.current) return;
 

@@ -334,7 +334,7 @@ export default function Home() {
 					</h3>
 					<div className="text-secondary leading-relaxed text-center max-w-2xl mx-auto">
 						<p className="mb-4">
-							Hi, I'm Eva! I'm a home stager with a love for transforming spaces
+							Hi, I&apos;m Eva! I&apos;m a home stager with a love for transforming spaces
 							into warm, beautiful homes that buyers fall in love with. I
 							started my career in marketing, where I spent years leading
 							creative campaigns and working with amazing teams across North
@@ -343,7 +343,7 @@ export default function Home() {
 						<p>
 							Now, I get to blend that experience with my passion for
 							design—styling spaces to help them shine on the market. Whether
-							it's rearranging furniture or adding just the right finishing
+							it&apos;s rearranging furniture or adding just the right finishing
 							touches, I love creating rooms that feel both welcoming and
 							intentional.
 						</p>
@@ -394,7 +394,7 @@ export default function Home() {
 
 					{/* Before/After Projects */}
 					<div className="space-y-16 mb-24">
-						{filteredProjects.map((project, index) => (
+						{filteredProjects.map((project) => (
 							<div key={project.id} className="max-w-4xl mx-auto">
 								<BeforeAfterSlider
 									beforeImage={project.beforeImage}
@@ -465,8 +465,8 @@ export default function Home() {
 				<div className="max-w-4xl mx-auto text-center">
 					<h3 className="font-serif text-3xl mb-8">Get In Touch</h3>
 					<p className="opacity-80 mb-8">
-						Whether you're a realtor looking to enhance listings or a homeowner
-						preparing to sell, I'm here to help create spaces that captivate and
+						Whether you&apos;re a realtor looking to enhance listings or a homeowner
+						preparing to sell, I&apos;m here to help create spaces that captivate and
 						sell.
 					</p>
 					<div className="space-y-3">
