@@ -13,8 +13,8 @@ export default {
 				muted: 'var(--muted)',
 			},
 			fontFamily: {
-				serif: ['var(--font-playfair)', 'serif'],
-				sans: ['var(--font-inter)', 'sans-serif'],
+				serif: ['"Crimson Text"', 'Georgia', 'Times New Roman', 'serif'],
+				sans: ['"Source Sans Pro"', 'system-ui', 'sans-serif'],
 			},
 		},
 	},

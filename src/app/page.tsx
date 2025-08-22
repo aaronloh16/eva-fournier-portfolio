@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 import ThemeToggle from '@/components/ThemeToggle';
 
@@ -50,7 +50,7 @@ const portfolioProjects = [
 	{
 		id: 5,
 		title: 'Pink Bedroom Makeover',
-		category: 'bedroom',
+		category: 'kids-bedroom',
 		location: 'Oakville, ON',
 		beforeImage: '/portfolio/bedrooms/pink-bedroom-before.webp',
 		afterImage: '/portfolio/bedrooms/pink-bedroom-after.webp',
@@ -59,7 +59,7 @@ const portfolioProjects = [
 	{
 		id: 6,
 		title: 'Bedroom 4 Transformation',
-		category: 'bedroom',
+		category: 'primary-bedroom',
 		location: 'Oakville, ON',
 		beforeImage: '/portfolio/bedrooms/bedroom4-before.webp',
 		afterImage: '/portfolio/bedrooms/bedroom4-after.webp',
@@ -78,7 +78,7 @@ const portfolioProjects = [
 	{
 		id: 8,
 		title: 'Guest Room Styling',
-		category: 'bedroom',
+		category: 'primary-bedroom',
 		location: 'Oakville, ON',
 		beforeImage: '/portfolio/bedrooms/guest-room-before.webp',
 		afterImage: '/portfolio/bedrooms/guest-room-after.webp',
@@ -105,7 +105,7 @@ const portfolioProjects = [
 	{
 		id: 11,
 		title: 'Balcony Bedroom Staging',
-		category: 'bedroom',
+		category: 'primary-bedroom',
 		location: 'Oakville, ON',
 		beforeImage: '/portfolio/living-areas/balcony-bedroom-before.webp',
 		afterImage: '/portfolio/living-areas/balcony-bedroom-after.webp',
@@ -126,17 +126,37 @@ const portfolioProjects = [
 		title: 'Closet Organization',
 		category: 'storage',
 		location: 'Oakville, ON',
-		beforeImage: '/portfolio/utility-storage/closet-before.webp',
-		afterImage: '/portfolio/utility-storage/closet-after.webp',
+		beforeImage: '/portfolio/dining-rooms/dining2-before.webp',
+		afterImage: '/portfolio/dining-rooms/dining2-after.webp',
 		description: 'Expertly organized closet maximizing storage potential.',
 	},
 	{
 		id: 14,
 		title: 'Bedroom 6 Transformation',
-		category: 'bedroom',
+		category: 'primary-bedroom',
 		location: 'Oakville, ON',
 		beforeImage: '/portfolio/utility-storage/bedroom6-before.webp',
 		afterImage: '/portfolio/utility-storage/bedroom6-after.webp',
+		description:
+			'Complete bedroom makeover with modern styling and functionality.',
+	},
+	{
+		id: 15,
+		title: 'Bedroom 7 Transformation',
+		category: 'primary-bedroom',
+		location: 'Oakville, ON',
+		beforeImage: '/portfolio/bedrooms/bedroom-after-alt.webp',
+		afterImage: '/portfolio/living-areas/reading-nook.webp',
+		description:
+			'Complete bedroom makeover with modern styling and functionality.',
+	},
+	{
+		id: 16,
+		title: 'basement sitting room Transformation',
+		category: 'primary-bedroom',
+		location: 'Oakville, ON',
+		beforeImage: '/portfolio/living-areas/basement-sitting-area-before.webp',
+		afterImage: '/portfolio/living-areas/living-room-after-2.webp',
 		description:
 			'Complete bedroom makeover with modern styling and functionality.',
 	},
@@ -150,20 +170,6 @@ const showcaseProjects = [
 		location: 'Oakville, ON',
 		image: '/portfolio/kitchens/kitchen-designed-by-eva.webp',
 		description: 'Custom kitchen design showcasing Eva&apos;s signature style.',
-	},
-	{
-		id: 17,
-		title: 'Cozy Reading Nook',
-		location: 'Burlington, ON',
-		image: '/portfolio/living-areas/reading-nook.webp',
-		description: 'Cozy reading corner with perfect lighting and comfort.',
-	},
-	{
-		id: 18,
-		title: 'Alternative Living Space',
-		location: 'Mississauga, ON',
-		image: '/portfolio/living-areas/living-room-after-2.webp',
-		description: 'Additional living space showcase with modern styling.',
 	},
 	{
 		id: 20,
@@ -189,39 +195,90 @@ const showcaseProjects = [
 	},
 	{
 		id: 23,
-		title: 'Elegant Bedroom Design',
+		title: 'bathroom',
 		location: 'Oakville, ON',
-		image: '/portfolio/bedrooms/bedroom-after-alt.webp',
-		description: 'Alternative bedroom styling approach with unique character.',
-	},
-	{
-		id: 24,
-		title: 'Child Bedroom Design',
-		location: 'Burlington, ON',
-		image: '/portfolio/bedrooms/child-bedroom-after.webp',
-		description:
-			'Bright, cheerful child&apos;s room perfect for growing families.',
-	},
-
-	{
-		id: 28,
-		title: 'Guest Bedroom Styling',
-		location: 'Mississauga, ON',
-		image: '/portfolio/bedrooms/guest-room-after.webp',
-		description: 'Welcoming guest room with hotel-inspired comfort and style.',
+		image: '/portfolio/featured/bathroom.webp',
+		description: 'bathroom after photo',
 	},
 ];
 
 export default function Home() {
 	const [selectedCategory, setSelectedCategory] = useState('all');
+	const [scrollY, setScrollY] = useState(0);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setScrollY(window.scrollY);
+		};
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
+
+	const smoothScrollTo = (elementId: string) => {
+		console.log('Smooth scrolling to:', elementId); // Debug log
+		const element = document.getElementById(elementId);
+		if (element) {
+			const offsetTop = element.offsetTop;
+			console.log('Element found, offset:', offsetTop); // Debug log
+
+			// Try different smooth scroll methods for better compatibility
+			try {
+				window.scrollTo({
+					top: offsetTop - 80,
+					behavior: 'smooth',
+				});
+			} catch (error) {
+				// Fallback for older browsers
+				element.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start',
+				});
+			}
+		} else {
+			console.log('Element not found:', elementId); // Debug log
+		}
+	};
 
 	const filteredProjects = portfolioProjects.filter((project) => {
 		if (selectedCategory === 'all') return true;
 		return project.category === selectedCategory;
 	});
 
+	// Calculate background color based on scroll position and theme
+	const getBackgroundColor = () => {
+		// Check if dark mode is active
+		const isDarkMode =
+			document.documentElement.getAttribute('data-theme') === 'dark';
+
+		if (isDarkMode) {
+			// For dark mode, return the CSS variable value
+			return 'var(--background)';
+		} else {
+			// For light mode, keep the scroll effect
+			const maxScroll = 1000;
+			const scrollRatio = Math.min(scrollY / maxScroll, 1);
+
+			const lightR = 254,
+				lightG = 252,
+				lightB = 251; // #fefcfb
+			const darkR = 248,
+				darkG = 245,
+				darkB = 240; // #f8f5f0
+
+			const r = Math.round(lightR + (darkR - lightR) * scrollRatio);
+			const g = Math.round(lightG + (darkG - lightG) * scrollRatio);
+			const b = Math.round(lightB + (darkB - lightB) * scrollRatio);
+
+			return `rgb(${r}, ${g}, ${b})`;
+		}
+	};
+
 	return (
-		<div className="min-h-screen bg-background">
+		<div
+			className="min-h-screen transition-colors duration-300"
+			style={{ backgroundColor: getBackgroundColor() }}
+		>
 			{/* Theme Toggle */}
 			<ThemeToggle />
 
@@ -238,24 +295,33 @@ export default function Home() {
 						</span>
 					</h1>
 					<div className="hidden md:flex space-x-6 items-center">
-						<a
-							href="#about"
-							className="text-secondary hover:text-foreground transition-colors"
+						<button
+							onClick={(e) => {
+								e.preventDefault();
+								smoothScrollTo('about');
+							}}
+							className="text-secondary hover:text-foreground transition-colors cursor-pointer bg-transparent border-none"
 						>
 							About
-						</a>
-						<a
-							href="#portfolio"
-							className="text-secondary hover:text-foreground transition-colors"
+						</button>
+						<button
+							onClick={(e) => {
+								e.preventDefault();
+								smoothScrollTo('portfolio');
+							}}
+							className="text-secondary hover:text-foreground transition-colors cursor-pointer bg-transparent border-none"
 						>
 							Portfolio
-						</a>
-						<a
-							href="#contact"
-							className="text-secondary hover:text-foreground transition-colors"
+						</button>
+						<button
+							onClick={(e) => {
+								e.preventDefault();
+								smoothScrollTo('contact');
+							}}
+							className="text-secondary hover:text-foreground transition-colors cursor-pointer bg-transparent border-none"
 						>
 							Contact
-						</a>
+						</button>
 						<a
 							href="/Eva Nowodworski Resume.pdf"
 							download="Eva Nowodworski Resume.pdf"
@@ -289,22 +355,14 @@ export default function Home() {
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 						<button
-							onClick={() =>
-								document
-									.getElementById('portfolio')
-									?.scrollIntoView({ behavior: 'smooth' })
-							}
+							onClick={() => smoothScrollTo('portfolio')}
 							className="px-8 py-4 rounded-lg transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
 							style={{ backgroundColor: '#8B9A7A', color: 'white' }}
 						>
 							View My Work
 						</button>
 						<button
-							onClick={() =>
-								document
-									.getElementById('contact')
-									?.scrollIntoView({ behavior: 'smooth' })
-							}
+							onClick={() => smoothScrollTo('contact')}
 							className="px-8 py-4 rounded-lg transition-all duration-300 font-semibold text-lg"
 							style={{
 								border: '2px solid #8B9A7A',
@@ -330,15 +388,15 @@ export default function Home() {
 			<section id="about" className="px-6 py-16 bg-muted">
 				<div className="max-w-4xl mx-auto">
 					<h3 className="font-serif text-5xl md:text-6xl text-foreground mb-12 text-center font-light">
-						About
+						About Me
 					</h3>
 					<div className="text-secondary leading-relaxed text-center max-w-2xl mx-auto">
 						<p className="mb-4">
-							Hi, I&apos;m Eva! I&apos;m a home stager with a love for transforming spaces
-							into warm, beautiful homes that buyers fall in love with. I
-							started my career in marketing, where I spent years leading
-							creative campaigns and working with amazing teams across North
-							America.
+							Hi, I&apos;m Eva! I&apos;m a home stager with a love for
+							transforming spaces into warm, beautiful homes that buyers fall in
+							love with. I started my career in marketing, where I spent years
+							leading creative campaigns and working with amazing teams across
+							North America.
 						</p>
 						<p>
 							Now, I get to blend that experience with my passion for
@@ -367,7 +425,6 @@ export default function Home() {
 						<div className="flex flex-wrap gap-3 bg-muted px-6 py-4 rounded-full">
 							{[
 								{ id: 'all', label: 'All Spaces' },
-								{ id: 'bedroom', label: 'Bedrooms' },
 								{ id: 'living-room', label: 'Living Areas' },
 								{ id: 'kids-bedroom', label: 'Kids Rooms' },
 								{ id: 'primary-bedroom', label: 'Primary Suite' },
@@ -393,17 +450,58 @@ export default function Home() {
 					</div>
 
 					{/* Before/After Projects */}
-					<div className="space-y-16 mb-24">
-						{filteredProjects.map((project) => (
-							<div key={project.id} className="max-w-4xl mx-auto">
-								<BeforeAfterSlider
-									beforeImage={project.beforeImage}
-									afterImage={project.afterImage}
-									title={project.title}
-								/>
-							</div>
-						))}
-					</div>
+					{selectedCategory === 'all' ? (
+						// Side-by-side layout for "All Spaces"
+						<div className="max-w-6xl mx-auto space-y-12 mb-24">
+							{filteredProjects.map((project) => (
+								<div key={project.id} className="group cursor-pointer">
+									<div className="grid grid-cols-2 gap-4 h-96 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+										{/* Before Image */}
+										<div className="relative overflow-hidden">
+											<Image
+												src={project.beforeImage}
+												alt={`${project.title} - Before`}
+												fill
+												className="object-cover portfolio-image transition-transform duration-700 group-hover:scale-110"
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+											<div className="absolute bottom-4 left-4 bg-black/80 text-white px-3 py-2 text-xs font-medium rounded-lg backdrop-blur-sm shadow-lg border border-white/30">
+												Original Space
+											</div>
+										</div>
+										{/* After Image */}
+										<div className="relative overflow-hidden">
+											<Image
+												src={project.afterImage}
+												alt={`${project.title} - After`}
+												fill
+												className="object-cover portfolio-image transition-transform duration-700 group-hover:scale-110"
+											/>
+											<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+											<div className="absolute bottom-4 right-4 bg-primary text-white px-3 py-2 text-xs font-medium rounded-lg backdrop-blur-sm shadow-lg border border-white/30">
+												Transformed Space
+											</div>
+										</div>
+									</div>
+								</div>
+							))}
+						</div>
+					) : (
+						// Slider layout for filtered categories
+						<div className="space-y-20 mb-24">
+							{filteredProjects.map((project) => (
+								<div key={project.id} className="max-w-6xl mx-auto group">
+									<div className="rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-1 bg-card">
+										<BeforeAfterSlider
+											beforeImage={project.beforeImage}
+											afterImage={project.afterImage}
+											title={project.title}
+										/>
+									</div>
+								</div>
+							))}
+						</div>
+					)}
 
 					{/* Showcase Projects */}
 					<div>
@@ -460,19 +558,50 @@ export default function Home() {
 			{/* Contact Section */}
 			<section
 				id="contact"
-				className="px-6 py-16 bg-foreground text-background"
+				className="px-6 py-20 relative overflow-hidden"
+				style={{
+					backgroundColor: '#f0ebe5',
+					color: '#4a453f',
+				}}
 			>
-				<div className="max-w-4xl mx-auto text-center">
-					<h3 className="font-serif text-3xl mb-8">Get In Touch</h3>
-					<p className="opacity-80 mb-8">
-						Whether you&apos;re a realtor looking to enhance listings or a homeowner
-						preparing to sell, I&apos;m here to help create spaces that captivate and
-						sell.
+				{/* Enhanced background with texture */}
+				<div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5"></div>
+				<div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+
+				<div className="max-w-4xl mx-auto text-center relative z-10">
+					<h3 className="font-serif text-5xl mb-8">Let's Get In Touch!</h3>
+					<p className="opacity-90 mb-12 text-lg leading-relaxed">
+						Whether you&apos;re a realtor looking to enhance listings or a
+						homeowner preparing to sell, I&apos;m here to help create spaces
+						that captivate and sell.
 					</p>
-					<div className="space-y-3">
-						<p className="text-lg">eva_fournier@yahoo.ca</p>
-						<p className="text-lg">905-464-8006</p>
+
+					<div className="space-y-4 mb-8">
+						<p className="text-lg tracking-wide text-center">
+							📧 eva_fournier@yahoo.ca
+						</p>
+						<p className="text-lg tracking-wide text-center">📞 905-464-8006</p>
 					</div>
+
+					{/* Resume Download Button */}
+					<a
+						href="/Eva Nowodworski Resume.pdf"
+						download="Eva Nowodworski Resume.pdf"
+						className="inline-flex items-center gap-2 px-6 py-3 text-lg font-medium transition-all duration-300 hover:opacity-90 border rounded-lg"
+						style={{
+							color: '#4a453f',
+							borderColor: '#4a453f20',
+							backgroundColor: 'transparent',
+						}}
+						onMouseEnter={(e) => {
+							e.currentTarget.style.backgroundColor = '#4a453f10';
+						}}
+						onMouseLeave={(e) => {
+							e.currentTarget.style.backgroundColor = 'transparent';
+						}}
+					>
+						Download Resume
+					</a>
 				</div>
 			</section>
 		</div>

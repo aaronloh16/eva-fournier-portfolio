@@ -1,16 +1,17 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@300;400;600&display=swap');
 
 /* Light Mode (Default) */
 :root {
 	--background: #fefcfb;
 	--foreground: #2d2925;
-	--primary: #22c55e;
-	--primary-light: #bbf7d0;
-	--primary-dark: #16a34a;
+	--primary: #8b9a7a;
+	--primary-light: #c1d1b1;
+	--primary-dark: #7a8969;
 	--secondary: #6b645c;
-	--card: #fefefe;
+	--card: #ffffff;
 	--border: #e5e5e5;
-	--muted: #f9faf7;
+	--muted: #f0ebe5;
 }
 
 /* Dark Mode */
@@ -29,7 +30,10 @@
 body {
 	background: var(--background);
 	color: var(--foreground);
-	font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+	font-family: 'Source Sans Pro', system-ui, sans-serif;
+	font-weight: 400;
+	line-height: 1.6;
+	letter-spacing: 0.01em;
 	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -44,4 +48,27 @@ body {
 	object-fit: cover;
 	object-position: center;
 	filter: contrast(1.03) saturate(1.05);
+}
+
+/* Studio McGee inspired typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Crimson Text', Georgia, 'Times New Roman', serif;
+	font-weight: 400;
+	line-height: 1.3;
+	letter-spacing: -0.02em;
+}
+
+.font-serif {
+	font-family: 'Crimson Text', Georgia, 'Times New Roman', serif;
+	letter-spacing: -0.02em;
+}
+
+.font-sans {
+	font-family: 'Source Sans Pro', system-ui, sans-serif;
+	letter-spacing: 0.01em;
 }
