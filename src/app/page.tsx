@@ -165,44 +165,15 @@ const portfolioProjects = [
 const showcaseProjects = [
 	{
 		id: 19,
-		title: 'Kitchen Design by Eva',
+		title: 'Custom Kitchen Design',
 		location: 'Oakville, ON',
 		image: '/portfolio/kitchens/kitchen-designed-by-eva.webp',
-		description: 'Custom kitchen design showcasing Eva&apos;s signature style.',
-	},
-	{
-		id: 20,
-		title: 'Modern Kitchen Layout',
-		location: 'Oakville, ON',
-		image: '/portfolio/kitchens/kitchen-front.webp',
-		description:
-			'Beautiful kitchen layout with excellent flow and functionality.',
-	},
-	{
-		id: 21,
-		title: 'Kitchen Workspace Design',
-		location: 'Burlington, ON',
-		image: '/portfolio/kitchens/kitchen-side.webp',
-		description: 'Detailed view of kitchen workspace and storage solutions.',
-	},
-	{
-		id: 22,
-		title: 'Contemporary Kitchen',
-		location: 'Mississauga, ON',
-		image: '/portfolio/kitchens/kitchen3-after.webp',
-		description: 'Contemporary kitchen with sleek finishes and smart layout.',
-	},
-	{
-		id: 23,
-		title: 'bathroom',
-		location: 'Oakville, ON',
-		image: '/portfolio/featured/bathroom.webp',
-		description: 'bathroom after photo',
+		description: 'Custom kitchen design renovation showcasing all my personal choices. (I have a before photo of the old kitchen as well).',
 	},
 ];
 
 export default function Home() {
-	const [selectedCategory, setSelectedCategory] = useState('all');
+	const [selectedCategory, setSelectedCategory] = useState('living-room');
 
 	const smoothScrollTo = (elementId: string) => {
 		console.log('Smooth scrolling to:', elementId); // Debug log
@@ -230,7 +201,6 @@ export default function Home() {
 	};
 
 	const filteredProjects = portfolioProjects.filter((project) => {
-		if (selectedCategory === 'all') return true;
 		return project.category === selectedCategory;
 	});
 
@@ -245,7 +215,7 @@ export default function Home() {
 							className="block text-sm font-normal tracking-wide"
 							style={{ color: '#8B9A7A' }}
 						>
-							Interior Design & Staging
+							Home Staging & Design
 						</span>
 					</h1>
 					<div className="hidden md:flex space-x-6 items-center">
@@ -304,7 +274,7 @@ export default function Home() {
 					>
 						<div className="mb-8">
 							<span className="inline-block bg-primary-light text-primary-dark px-4 py-2 rounded-full text-sm font-semibold tracking-wide uppercase mb-6">
-								Interior Design & Staging
+								Home Staging & Design
 							</span>
 						</div>
 						<h2 className="font-serif text-5xl md:text-7xl font-light text-foreground mb-8 leading-tight">
@@ -359,13 +329,10 @@ export default function Home() {
 						<p className="mb-4">
 							Hi, I&apos;m Eva! I&apos;m a home stager with a love for
 							transforming spaces into warm, beautiful homes that buyers fall in
-							love with. I started my career in marketing, where I spent years
-							leading creative campaigns and working with amazing teams across
-							North America.
+							love with. I started my career working across North America in the beauty industry.
 						</p>
 						<p>
-							Now, I get to blend that experience with my passion for
-							design—styling spaces to help them shine on the market. Whether
+							Today, I get to blend that fashion experience with my passion for design - styling spaces to help them shine on the market. Whether
 							it&apos;s rearranging furniture or adding just the right finishing
 							touches, I love creating rooms that feel both welcoming and
 							intentional.
@@ -381,15 +348,13 @@ export default function Home() {
 						Before & After
 					</h3>
 					<p className="text-secondary text-center mb-8 max-w-2xl mx-auto">
-						See how strategic staging transforms spaces and helps homes sell
-						faster
+						Strategic staging transforms spaces making buyers fall in love with the home the moment they walk through the door.
 					</p>
 
 					{/* Filter Buttons */}
 					<div className="flex justify-center mb-16">
 						<div className="flex flex-wrap gap-3 bg-muted px-6 py-4 rounded-full">
 							{[
-								{ id: 'all', label: 'All Spaces' },
 								{ id: 'living-room', label: 'Living Areas' },
 								{ id: 'kids-bedroom', label: 'Kids Rooms' },
 								{ id: 'primary-bedroom', label: 'Primary Suite' },
@@ -415,58 +380,19 @@ export default function Home() {
 					</div>
 
 					{/* Before/After Projects */}
-					{selectedCategory === 'all' ? (
-						// Side-by-side layout for "All Spaces"
-						<div className="max-w-6xl mx-auto space-y-12 mb-24">
-							{filteredProjects.map((project) => (
-								<div key={project.id} className="group cursor-pointer">
-									<div className="grid grid-cols-2 gap-4 h-96 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-										{/* Before Image */}
-										<div className="relative overflow-hidden">
-											<Image
-												src={project.beforeImage}
-												alt={`${project.title} - Before`}
-												fill
-												className="object-cover portfolio-image transition-transform duration-700 group-hover:scale-110"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-											<div className="absolute bottom-4 left-4 bg-black/80 text-white px-3 py-2 text-xs font-medium rounded-lg backdrop-blur-sm shadow-lg border border-white/30">
-												Original Space
-											</div>
-										</div>
-										{/* After Image */}
-										<div className="relative overflow-hidden">
-											<Image
-												src={project.afterImage}
-												alt={`${project.title} - After`}
-												fill
-												className="object-cover portfolio-image transition-transform duration-700 group-hover:scale-110"
-											/>
-											<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-											<div className="absolute bottom-4 right-4 bg-primary text-white px-3 py-2 text-xs font-medium rounded-lg backdrop-blur-sm shadow-lg border border-white/30">
-												Transformed Space
-											</div>
-										</div>
-									</div>
+					<div className="space-y-20 mb-24">
+						{filteredProjects.map((project) => (
+							<div key={project.id} className="max-w-6xl mx-auto group">
+								<div className="rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-1 bg-card">
+									<BeforeAfterSlider
+										beforeImage={project.beforeImage}
+										afterImage={project.afterImage}
+										title={project.title}
+									/>
 								</div>
-							))}
-						</div>
-					) : (
-						// Slider layout for filtered categories
-						<div className="space-y-20 mb-24">
-							{filteredProjects.map((project) => (
-								<div key={project.id} className="max-w-6xl mx-auto group">
-									<div className="rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-1 bg-card">
-										<BeforeAfterSlider
-											beforeImage={project.beforeImage}
-											afterImage={project.afterImage}
-											title={project.title}
-										/>
-									</div>
-								</div>
-							))}
-						</div>
-					)}
+							</div>
+						))}
+					</div>
 
 					{/* Showcase Projects */}
 					<div>

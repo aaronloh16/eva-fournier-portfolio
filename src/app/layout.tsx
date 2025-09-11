@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-	title: 'Eva Nowodworski - Interior Design & Home Staging',
+	title: 'Eva Nowodworski - Home Staging & Design',
 	description:
 		'Creating beautiful, functional spaces that enhance everyday living through thoughtful design and staging.',
 };
