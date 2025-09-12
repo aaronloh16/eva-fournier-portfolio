@@ -327,12 +327,15 @@ export default function Home() {
 					</h3>
 					<div className="text-secondary leading-relaxed text-center max-w-2xl mx-auto">
 						<p className="mb-4">
-							Hi, I&apos;m Eva! I&apos;m a home stager with a love for
+							Hi, I&apos;m Eva. I&apos;m a home stager with a love for
 							transforming spaces into warm, beautiful homes that buyers fall in
-							love with. I started my career working across North America in the beauty industry.
+							love with. I started my career in marketing, where I spent years
+							leading creative campaigns and working with amazing teams across
+							North America in the beauty industry.
 						</p>
 						<p>
-							Today, I get to blend that fashion experience with my passion for design - styling spaces to help them shine on the market. Whether
+							Today, I get to blend my past fashion experience with my passion for
+							design—styling spaces to help them shine on the market. Whether
 							it&apos;s rearranging furniture or adding just the right finishing
 							touches, I love creating rooms that feel both welcoming and
 							intentional.
