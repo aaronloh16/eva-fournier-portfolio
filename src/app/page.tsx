@@ -385,8 +385,8 @@ export default function Home() {
 							Contact
 						</button>
 						<a
-							href="/Eva Nowodworski Resume.pdf"
-							download="Eva Nowodworski Resume.pdf"
+							href="/Eva-Nowodworski-Resume.pdf"
+							download="Eva-Nowodworski-Resume.pdf"
 							className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300"
 							style={{
 								backgroundColor: '#8B9A7A',
@@ -606,8 +606,8 @@ export default function Home() {
 
 					{/* Resume Download Button */}
 					<a
-						href="/Eva Nowodworski Resume.pdf"
-						download="Eva Nowodworski Resume.pdf"
+						href="/Eva-Nowodworski-Resume.pdf"
+						download="Eva-Nowodworski-Resume.pdf"
 						className="inline-flex items-center gap-2 px-6 py-3 text-lg font-medium transition-all duration-300 hover:opacity-90 border rounded-lg"
 						style={{
 							color: '#4a453f',
