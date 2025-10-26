@@ -292,7 +292,7 @@ const showcaseProjects = [
 	},
 	{
 		id: 40,
-		title: 'Staged Hallway Design',
+		title: 'Hallway Design',
 		image: '/portfolio/featured/staged-and-designed-hallway-by-eva.webp',
 		description: 'Elegant hallway staging and design that creates a welcoming first impression.',
 	},
@@ -375,26 +375,15 @@ export default function Home() {
 						>
 							Portfolio
 						</button>
-						<button
-							onClick={(e) => {
-								e.preventDefault();
-								smoothScrollTo('contact');
-							}}
-							className="text-secondary hover:text-foreground transition-colors cursor-pointer bg-transparent border-none"
-						>
-							Contact
-						</button>
-						<a
-							href="/Eva-Nowodworski-Resume.pdf"
-							download="Eva-Nowodworski-Resume.pdf"
-							className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300"
-							style={{
-								backgroundColor: '#8B9A7A',
-								color: 'white',
-							}}
-						>
-							Download Resume
-						</a>
+					<button
+						onClick={(e) => {
+							e.preventDefault();
+							smoothScrollTo('contact');
+						}}
+						className="text-secondary hover:text-foreground transition-colors cursor-pointer bg-transparent border-none"
+					>
+						Contact
+					</button>
 					</div>
 				</div>
 			</nav>
@@ -597,32 +586,12 @@ export default function Home() {
 						that captivate and sell.
 					</p>
 
-					<div className="space-y-4 mb-8">
+					<div className="space-y-4">
 						<p className="text-lg tracking-wide text-center">
 							📧 eva_fournier@yahoo.ca
 						</p>
 						<p className="text-lg tracking-wide text-center">📞 905-464-8006</p>
 					</div>
-
-					{/* Resume Download Button */}
-					<a
-						href="/Eva-Nowodworski-Resume.pdf"
-						download="Eva-Nowodworski-Resume.pdf"
-						className="inline-flex items-center gap-2 px-6 py-3 text-lg font-medium transition-all duration-300 hover:opacity-90 border rounded-lg"
-						style={{
-							color: '#4a453f',
-							borderColor: '#4a453f20',
-							backgroundColor: 'transparent',
-						}}
-						onMouseEnter={(e) => {
-							e.currentTarget.style.backgroundColor = '#4a453f10';
-						}}
-						onMouseLeave={(e) => {
-							e.currentTarget.style.backgroundColor = 'transparent';
-						}}
-					>
-						Download Resume
-					</a>
 				</div>
 			</section>
 		</div>
